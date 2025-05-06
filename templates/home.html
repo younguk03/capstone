@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Capstone</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./css/styles.css')}}"
+    />
+  </head>
+  <body style="margin: 0; background-color: rgb(38, 49, 76)">
+    <div>
+      <h1 class="header">URL 취약점 분석</h1>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+      <img
+        src="static/internet.png"
+        style="width: 200px;"
+      />
+    </div>
+    <div class="form">
+      <form action="{{ url_for('result_page') }}" method="get">
+        <input
+          type="text"
+          class="search"
+          name="url"
+          placeholder="url입력하기"
+          required
+        />
+        <br>
+        <button type="submit" class="button" >search</button>
+      </form>
+    </div>
+  </body>
+</html>

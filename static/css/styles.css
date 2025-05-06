@@ -1,0 +1,49 @@
+.header {
+  color: rgb(90, 129, 228);
+  text-align: center;
+  font-weight: 400;
+  padding: 10px;
+  border-bottom: 1px solid;
+  width: 80%;
+  margin: auto;
+  font-size: x-large;
+}
+
+.form {
+  margin-top: 30px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search {
+  width: 400px;
+  height: 30px;
+  border-radius: 5px;
+  outline: none;
+  padding-left: 6px;
+  background-color: rgb(43, 61, 105);
+  border: 3px solid rgb(90, 129, 228);
+  color: rgb(255, 255, 255);
+}
+.search:active {
+  outline: black;
+}
+
+.button {
+  height: 35px;
+  width: 90px;
+  border: 1px solid;
+  border-radius: 3px;
+  background-color: rgb(43, 61, 105);
+  border: 2px solid rgb(90, 129, 228);
+  margin-top: 20px;
+  color: rgb(90, 129, 228);
+  transition: 0.2s;
+  font-size: large;
+}
+
+.button:hover{
+  background-color: rgb(90, 129, 228);
+  color: rgb(43, 61, 105);
+}
