@@ -4,34 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>result</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./css/styles2.css')}}"
+    />
   </head>
   <body>
     <div>
       <p style="text-align: center; padding: 17px; font-size: 30px">
         취약점 분석 결과
       </p>
-      <div style="margin-left: 10%; font-weight: 600;">
-        검사 url: <b style="font-weight: 600; color: blue" id="input-url" >{{url}}</b>
+      <div style="margin-left: 5%; font-weight:400; font-size: 18px;">
+        검사 url:
+        <b class="url_name" id="input-url"><a href="{{url}}">{{url}}</a></b>
       </div>
       <br />
     </div>
-    <table style="border-collapse: collapse; margin: auto; width: 1000px">
+    <table style="border-collapse: collapse; margin: auto; min-width: 1000px; max-width: 1300px;">
       <tr style="border: solid 1px black">
-        <th style="border: 1px solid black">id</th>
-        <th style="border: 1px solid black">type</th>
-        <th style="border: 1px solid black">원본 페이지</th>
-        <th style="border: 1px solid black">테스트된 URL</th>
-        <th style="border: 1px solid black">Payload</th>
+        <th style="border: 1px solid black; padding: 2px">id</th>
+        <th style="border: 1px solid black; padding: 2px">type</th>
+        <th style="border: 1px solid black; padding: 2px">원본 페이지</th>
+        <th style="border: 1px solid black; padding: 2px; width: 60%">
+          테스트된 URL
+        </th>
+        <th style="border: 1px solid black; padding: 2px">Payload</th>
       </tr>
+      {%for list in lists%}
       <tr>
-        <td style="border: 1px solid black">1</td>
-        <td style="border: 1px solid black"></td>
-        <td style="border: 1px solid black"></td>
-        <td style="border: 1px solid black"></td>
-        <td style="border: 1px solid black"></td>
+        <td style="border: 1px solid black; padding: 4px; text-align: center;">{{list.id}}</td>
+        <td style="border: 1px solid black; padding: 2px">{{list.type}}</td>
+        <td style="border: 1px solid black; padding: 4px">
+          {{list.originalPage}}
+        </td>
+        <td style="border: 1px solid black; padding: 4px; max-width: 50%; word-break: break-all;">
+          {{list.testURL}}
+        </td>
+        <td style="border: 1px solid black; padding: 4px">{{list.payload}}</td>
       </tr>
+      {%endfor%}
     </table>
-    <div>
-    </div>
+    <div></div>
   </body>
 </html>

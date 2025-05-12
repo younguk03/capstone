@@ -1,0 +1,9 @@
+.url_name {
+  font-size: 17px;
+  font-weight: 400;
+}
+.url_name:hover{
+  color: blue;
+  text-decoration: underline;
+  text-underline-position:under;
+}

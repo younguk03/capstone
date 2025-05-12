@@ -2,7 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse, parse_qs, urlencode
 from datetime import datetime
-from flask_app import app, List, db, result_page
+
+import dbsetting
+from flask_app import app, List, db
 
 xss_payloads = [
     "<script>alert(1)</script>",
@@ -45,121 +47,120 @@ def smart_crawl_site(base_url, max_links=50):
 
 
 def test_get_xss(url, payloads):
-    results = []
-    try:
-        parsed = urlparse(url)
-        qs = parse_qs(parsed.query)
-        for payload in payloads:
-            # 모든 파라미터에 페이로드 삽입
-            test_params = {k: payload for k in qs}
-            test_query = urlencode(test_params, doseq=True)
-            test_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}?{test_query}"
-            try:
-                resp = requests.get(test_url, timeout=2)
-                if payload in resp.text:
-                    results.append({
-                        "원본 페이지": url,
-                        "요청 방식": "GET",
-                        "페이로드": payload,
-                        "테스트된 URL": test_url
-                    })
-                    with app.app_context():
+    with app.app_context():
+        results = []
+        try:
+            parsed = urlparse(url)
+            qs = parse_qs(parsed.query)
+            for payload in payloads:
+                # 모든 파라미터에 페이로드 삽입
+                test_params = {k: payload for k in qs}
+                test_query = urlencode(test_params, doseq=True)
+                test_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}?{test_query}"
+                try:
+                    resp = requests.get(test_url, timeout=2)
+                    if payload in resp.text:
+                        results.append({
+                            "원본 페이지": url,
+                            "요청 방식": "GET",
+                            "페이로드": payload,
+                            "테스트된 URL": test_url
+                        })
                         db.create_all()
-                        a = List(type='GET', originalPage=url, testPage=test_url, payload=payload)
+                        a = List(type='GET', originalPage=url, testURL=test_url, payload=payload)
                         db.session.add(a)
                         db.session.commit()
 
-            except Exception as e:
-                continue
-            try:
-                resp = requests.post(test_url, timeout=2)
-                if payload in resp.text:
-                    results.append({
-                        "원본 페이지": url,
-                        "요청 방식": "POST",
-                        "페이로드": payload,
-                        "테스트된 URL": test_url
-                    })
-                    with app.app_context():
-                        db.create_all()
-                        a = List(type='POST', originalPage=url, testPage=test_url, payload=payload)
+                except Exception as e:
+                    continue
+                try:
+                    resp = requests.post(test_url, timeout=2)
+                    if payload in resp.text:
+                        results.append({
+                            "원본 페이지": url,
+                            "요청 방식": "POST",
+                            "페이로드": payload,
+                            "테스트된 URL": test_url
+                        })
+                        a = List(type='POST', originalPage=url, testURL=test_url, payload=payload)
                         db.session.add(a)
                         db.session.commit()
-            except Exception as e:
-                continue
-    except Exception as e:
-        pass
+                except Exception as e:
+                    continue
+        except Exception as e:
+            pass
 
-    return results
+        return results
 
 
 def test_post_xss(url, payloads):
-    results = []
-    try:
-        res = requests.get(url, timeout=5)
-        soup = BeautifulSoup(res.text, 'html.parser')
-        forms = soup.find_all('form')
-        for form in forms:
-            action = form.get('action')
-            method = form.get('method', 'get').lower()
-            inputs = form.find_all(['input', 'textarea'])
-            data = {}
-            for inp in inputs:
-                name = inp.get('name')
-                if not name:
-                    continue
-                data[name] = xss_payloads[0]  # 대표 페이로드
-            action_url = urljoin(url, action) if action else url
-            for payload in payloads:
-                for k in data:
-                    data[k] = payload
-                try:
-                    if method == 'post':
-                        resp = requests.post(action_url, data=data, timeout=5)
-                        if payload in resp.text:
-                            results.append({
-                                "원본 페이지": url,
-                                "요청 방식": "POST",
-                                "페이로드": payload,
-                                "테스트된 URL": f"{action_url} (data: {data})"
-                            })
-                            with app.app_context():
-                                db.create_all()
-                                a = List(type='GET', originalPage=url, testURL=f'{action_url}?{urlencode(data)}', payload=payload)
+    with app.app_context():
+        results = []
+        try:
+            res = requests.get(url, timeout=5)
+            soup = BeautifulSoup(res.text, 'html.parser')
+            forms = soup.find_all('form')
+            for form in forms:
+                action = form.get('action')
+                method = form.get('method', 'get').lower()
+                inputs = form.find_all(['input', 'textarea'])
+                data = {}
+                for inp in inputs:
+                    name = inp.get('name')
+                    if not name:
+                        continue
+                    data[name] = xss_payloads[0]  # 대표 페이로드
+                action_url = urljoin(url, action) if action else url
+                for payload in payloads:
+                    for k in data:
+                        data[k] = payload
+                    try:
+                        if method == 'post':
+                            resp = requests.post(action_url, data=data, timeout=2)
+                            if payload in resp.text:
+                                results.append({
+                                    "원본 페이지": url,
+                                    "요청 방식": 'POST',
+                                    "페이로드": payload,
+                                    "테스트된 URL": f"{action_url} (data: {data})"
+                                })
+                                a = List(type='POST', originalPage=url, testURL=f'{action_url}?{urlencode(data)}',
+                                         payload=payload)
                                 db.session.add(a)
                                 db.session.commit()
-                    else:
-                        resp = requests.get(action_url, params=data, timeout=5)
-                        if payload in resp.text:
-                            results.append({
-                                "원본 페이지": url,
-                                "요청 방식": "GET",
-                                "페이로드": payload,
-                                "테스트된 URL": f"{action_url}?{urlencode(data)}"
-                            })
-                            with app.app_context():
-                                b = List(type='GET', originalPage=url, testURL=f'{action_url}?{urlencode(data)}', payload=payload)
+                        elif method == 'get':
+                            resp = requests.get(action_url, params=data, timeout=2)
+                            if payload in resp.text:
+                                results.append({
+                                    "원본 페이지": url,
+                                    "요청 방식": 'GET',
+                                    "페이로드": payload,
+                                    "테스트된 URL": f"{action_url} (data: {data})"
+                                })
+                                b = List(type='GET', originalPage=url, testURL=f'{action_url}?{urlencode(data)}',
+                                         payload=payload)
                                 db.session.add(b)
                                 db.session.commit()
-                except Exception as e:
-                    continue
-    except Exception as e:
-        pass
-    return results
+                    except Exception as e:
+                        continue
+        except Exception as e:
+            pass
+        return results
 
 
 def main(url):
-    base_url = url
-    get_candidates, form_candidates = smart_crawl_site(base_url, max_links=50)
+    with app.app_context():
+        db.create_all()
+    get_candidates, form_candidates = smart_crawl_site(url, max_links=50)
     report = []
-    for url in get_candidates:
-        report.extend(test_get_xss(url, xss_payloads))
-    for url in form_candidates:
-        report.extend(test_post_xss(url, xss_payloads))
+    for url_text in get_candidates:
+        report.extend(test_get_xss(url_text, xss_payloads))
+    for url_text in form_candidates:
+        report.extend(test_post_xss(url_text, xss_payloads))
 
     # 보고서 출력
     print("XSS / DOM XSS 취약점 탐지 보고서\n")
-    print(f"대상 URL: {base_url}")
+    print(f"대상 URL: {url}")
     print(f"총 탐지 수: {len(report)}건\n")
     for idx, item in enumerate(report, 1):
         print(f"{idx}. 원본 페이지: {item['원본 페이지']}")
@@ -168,7 +169,7 @@ def main(url):
         print(f"테스트된 URL: {item['테스트된 URL']}\n")
 
 
-if __name__ == "__main__":
-    url = 'http://testphp.vulnweb.com'
-    main(url=url)
+# if __name__ == "__main__":
+#     url = 'http://testphp.vulnweb.com'
+#     main(url=url)
 
