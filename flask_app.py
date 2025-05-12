@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 # utils 폴더의 절대경로를 sys.path에 추가
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = ('sqlite:////대학/3학년/1학기/캡스톤디자인/project/capstone/form.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = ('sqlite:///form.db')
 db = SQLAlchemy(app)
 
 
