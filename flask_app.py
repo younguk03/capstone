@@ -18,8 +18,7 @@ class List(db.Model):
 
 @app.route('/', methods=['POST', 'GET'])
 def form():
-
-    return render_template('./home.html')
+    return render_template('home.html')
 
 
 @app.route('/resultPage', methods=['POST', 'GET'])
