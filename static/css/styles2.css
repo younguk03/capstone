@@ -2,8 +2,14 @@
   font-size: 17px;
   font-weight: 400;
 }
-.url_name:hover{
+.url_name:hover {
   color: blue;
   text-decoration: underline;
-  text-underline-position:under;
+  text-underline-position: under;
+}
+
+.button {
+  font-size: 17px;
+  text-align: right;
+  float: right;
 }

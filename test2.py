@@ -138,7 +138,7 @@ def test_post_xss(url, payloads):
                                     "테스트된 URL": f"{action_url} (data: {data})"
                                 })
                                 b = List(type='GET', originalPage=url, testURL=f'{action_url}?{urlencode(data)}',
-                                         payload=payload)
+                                        payload=payload)
                                 db.session.add(b)
                                 db.session.commit()
                     except Exception as e:
@@ -158,16 +158,22 @@ def main(url):
     for url_text in form_candidates:
         report.extend(test_post_xss(url_text, xss_payloads))
 
+    a = len(report)
+    
+
     # 보고서 출력
     print("XSS / DOM XSS 취약점 탐지 보고서\n")
     print(f"대상 URL: {url}")
     print(f"총 탐지 수: {len(report)}건\n")
+    print(f"{'번호':<4} {'주소':<40} {'위험':<6} {'설명'}")
     for idx, item in enumerate(report, 1):
-        print(f"{idx}. 원본 페이지: {item['원본 페이지']}")
-        print(f"요청 방식: {item['요청 방식']}")
-        print(f"페이로드: {item['페이로드']}")
-        print(f"테스트된 URL: {item['테스트된 URL']}\n")
-
+        # print(f"{idx}. 원본 페이지: {item['원본 페이지']}")
+        # print(f"요청 방식: {item['요청 방식']}")
+        # print(f"페이로드: {item['페이로드']}")
+        # print(f"테스트된 URL: {item['테스트된 URL']}\n")
+        # 기존 코드에서 report 출력 부분을 아래처럼 바꿔보세요
+        print(f"{idx:<4} {item['원본 페이지'][:38]:<40} {'발견됨':<6} 해커가 이 주소에 악성 코드를 넣을 수 있습니다.")
+        print("\n※ 발견된 주소는 웹 개발자 또는 보안 담당자에게 전달해 주세요.")
 
 # if __name__ == "__main__":
 #     url = 'http://testphp.vulnweb.com'
