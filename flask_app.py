@@ -72,6 +72,14 @@ def download_report():
         return "❌ 스캔 결과가 없습니다. 먼저 스캔을 실행해주세요.", 400
     return send_file(pdf_path, as_attachment=True)
 
+import sys
+import pkg_resources
+
+print("Python version:", sys.version)
+print("Installed packages:")
+for pkg in sorted(pkg_resources.working_set, key=lambda x: x.project_name):
+    print(f"{pkg.project_name}=={pkg.version}")
+
 
 # if __name__ == '__main__':
 #     app.run(host="0.0.0.0", port=int(os.environ.get("PORT",5000)))
