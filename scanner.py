@@ -337,3 +337,5 @@ def main(url,num):
     with app.app_context():
         db.create_all()
     run_full_scan(url, num)
+
+main('http://testphp.vulnweb.com', 4)
