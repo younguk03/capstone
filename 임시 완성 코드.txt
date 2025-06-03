@@ -1,0 +1,288 @@
+from datetime import datetime
+import os
+import pandas as pd
+import requests
+import time
+import textwrap
+from fpdf.enums import XPos, YPos
+from urllib.parse import urlparse, urljoin, parse_qs, urlencode
+from bs4 import BeautifulSoup
+from fpdf import FPDF
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from selenium.common.exceptions import NoAlertPresentException
+from concurrent.futures import ThreadPoolExecutor
+
+xss_payloads = [
+    "<script>alert(1)</script>", "'><svg/onload=confirm(1)>",
+    "<img src=x onerror=alert(1)>", "<svg><script>confirm(1)</script>",
+    "<body onload=prompt(1)>"
+]
+
+def safe_multiline(pdf, text, width=90):
+    for line in textwrap.wrap(text, width=width):
+        pdf.cell(0, 8, line, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+def fetch_links(url, base_url, visited):
+    found_links = []
+    headers = {"User-Agent": "Mozilla/5.0"}
+    try:
+        res = requests.get(url, headers=headers, timeout=3)
+        soup = BeautifulSoup(res.text, "html.parser")
+        visited.add(url)
+        if "?" in url and "=" in url:
+            found_links.append(('get', url))
+        if soup.find("form"):
+            found_links.append(('form', url))
+        for a in soup.find_all("a", href=True):
+            link = urljoin(url, a['href'])
+            if urlparse(link).netloc == urlparse(base_url).netloc and link not in visited:
+                found_links.append(('next', link))
+    except:
+        pass
+    return found_links
+
+def smart_crawl_site(base_url, max_links=10):
+    visited, to_visit = set(), [base_url]
+    get_targets, form_targets = [], []
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        while to_visit and len(visited) < max_links:
+            futures = [executor.submit(fetch_links, url, base_url, visited) for url in to_visit[:10]]
+            to_visit = to_visit[10:]
+            for future in futures:
+                for kind, link in future.result():
+                    if kind == 'get': get_targets.append(link)
+                    elif kind == 'form': form_targets.append(link)
+                    elif kind == 'next' and link not in visited: to_visit.append(link)
+    no_param = [u for u in visited if "?" not in u]
+    fake_param_urls = [u + "?test=x" for u in no_param]
+    return list(set(get_targets + fake_param_urls + form_targets))
+
+def run_scan(url):
+    checked_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    security_headers = {
+        "Content-Security-Policy": ["default-src 'self'"],
+        "X-Frame-Options": ["DENY", "SAMEORIGIN"],
+        "Strict-Transport-Security": ["max-age=63072000; includeSubDomains"],
+        "X-Content-Type-Options": ["nosniff"],
+        "Referrer-Policy": ["no-referrer", "strict-origin-when-cross-origin"]
+    }
+    results = []
+    try:
+        response = requests.get(url, timeout=5)
+    except Exception as e:
+        return {"url": url, "checked_at": checked_at, "error": str(e), "results": []}
+    for header, expected_values in security_headers.items():
+        actual_value = response.headers.get(header)
+        if actual_value is None:
+            status = "missing"
+        elif actual_value not in expected_values:
+            status = "warning"
+        else:
+            status = "ok"
+        results.append({"header": header, "status": status, "actual": actual_value, "recommended": expected_values})
+    return {"url": url, "checked_at": checked_at, "results": results}
+
+def detect_get_param_xss(url):
+    results = []
+    parsed = urlparse(url)
+    query = parse_qs(parsed.query)
+    if not query:
+        return []
+    for payload in xss_payloads:
+        new_query = {key: payload for key in query}
+        new_url = parsed._replace(query=urlencode(new_query, doseq=True)).geturl()
+        try:
+            r = requests.get(new_url, timeout=5)
+            if payload in r.text:
+                results.append((url, new_url, "GET", payload))
+        except:
+            continue
+    return results
+
+def detect_form_xss(url):
+    results = []
+    try:
+        res = requests.get(url, timeout=5)
+        soup = BeautifulSoup(res.text, "html.parser")
+        forms = soup.find_all("form")
+        for form in forms:
+            action = form.get("action")
+            method = form.get("method", "get").lower()
+            inputs = form.find_all(["input", "textarea"])
+            form_url = urljoin(url, action)
+            for payload in xss_payloads:
+                data = {tag.get("name"): payload for tag in inputs if tag.get("name")}
+                try:
+                    if method == "post":
+                        r = requests.post(form_url, data=data, timeout=5)
+                    else:
+                        r = requests.get(form_url, params=data, timeout=5)
+                    if payload in r.text:
+                        results.append((url, form_url, method.upper(), payload))
+                        break
+                except:
+                    continue
+    except:
+        pass
+    return results
+
+def detect_sqli(url):
+    sqli_payloads = ["'", '"', "'--", '"--', "')--", "' or '1'='1", '" or "1"="1"', "' OR sleep(5)--"]
+    sqli_errors = ["sql syntax", "mysql_fetch", "ORA-00933"]
+    parsed = urlparse(url)
+    query = parse_qs(parsed.query)
+    if not query:
+        return []
+    results = []
+    for param in query:
+        for payload in sqli_payloads:
+            mod_query = query.copy()
+            mod_query[param] = payload
+            injected_url = parsed._replace(query=urlencode(mod_query, doseq=True)).geturl()
+            try:
+                start = time.time()
+                r = requests.get(injected_url, timeout=8)
+                delay = time.time() - start
+                if any(err in r.text.lower() for err in sqli_errors) or delay > 4.5:
+                    results.append((url, injected_url, "SQLi", payload))
+                    break
+            except:
+                continue
+    return results
+
+def detect_csrf(url):
+    results = []
+    try:
+        res = requests.get(url, timeout=5)
+        soup = BeautifulSoup(res.text, "html.parser")
+        cookies = res.headers.get("Set-Cookie", "").lower()
+        for form in soup.find_all("form"):
+            if form.get("method", "get").lower() == "post":
+                names = [i.get("name", "").lower() for i in form.find_all("input")]
+                if not any("csrf" in n or "token" in n for n in names):
+                    notes = ["CSRF 토큰 없음"]
+                    if "samesite" not in cookies: notes.append("SameSite 쿠키 없음")
+                    if "secure" not in cookies: notes.append("Secure 쿠키 없음")
+                    results.append((url, urljoin(url, form.get("action")), "CSRF", " | ".join(notes)))
+    except:
+        pass
+    return results
+
+def detect_dom_xss_selenium(urls):
+    chrome_options = Options()
+    chrome_options.add_argument("--headless=new")
+    chrome_options.add_argument("--window-size=1280,800")
+    results = []
+    try:
+        driver = webdriver.Chrome(service=Service("chromedriver.exe"), options=chrome_options)
+        for url in urls:
+            try:
+                driver.get(url)
+                time.sleep(1)
+                for payload in xss_payloads:
+                    for elem in driver.find_elements(By.TAG_NAME, "input"):
+                        try: elem.clear(); elem.send_keys(payload)
+                        except: continue
+                    for b in driver.find_elements(By.TAG_NAME, "button"):
+                        try: b.click()
+                        except: continue
+                    time.sleep(1)
+                    try:
+                        alert = driver.switch_to.alert
+                        alert.accept()
+                        results.append((url, url, "DOM", payload))
+                        break
+                    except NoAlertPresentException:
+                        continue
+            except: continue
+        driver.quit()
+    except Exception as e:
+        print(f"[\u274c \ub4dc\ub77c\uc774\ubc84 \uc2e4\ud589 \uc2e4\ud328] {e}")
+    return results
+
+def generate_korean_pdf_report(results, header_reports, target_url):
+    pdf = FPDF()
+    base_dir = os.getcwd()
+    font_path = os.path.join(base_dir, "NanumGothic-Regular.ttf")
+    bold_path = os.path.join(base_dir, "NanumGothic-Bold.ttf")
+
+    pdf.add_font("Nanum", "", font_path)
+    pdf.add_font("Nanum", "B", bold_path)
+    pdf.set_font("Nanum", size=12)
+    pdf.add_page()
+
+    safe_multiline(pdf, "웹 통합 취약점 탐지 보고서")
+    safe_multiline(pdf, f"대상 사이트: {target_url}")
+    safe_multiline(pdf, f"총 탐지된 취약점 수: {len(results)}건")
+    pdf.ln(5)
+
+    for i, (origin, tested_url, method, payload) in enumerate(results, 1):
+        pdf.set_font("Nanum", size=12)
+        safe_multiline(pdf, f"{i}. 원본: {origin}")
+        safe_multiline(pdf, f"방식: {method}")
+        safe_multiline(pdf, f"페이로드: {payload}")
+        safe_multiline(pdf, f"URL: {tested_url}")
+        pdf.ln(3)
+
+    pdf.add_page()
+    pdf.set_font("Nanum", size=12)
+    safe_multiline(pdf, "[보안 헤더 점검 결과]")
+
+    for report in header_reports:
+        pdf.set_font("Nanum", "B", size=12)
+        safe_multiline(pdf, f"URL: {report['url']}")
+        pdf.set_font("Nanum", size=11)
+        if "error" in report:
+            safe_multiline(pdf, f"에러: {report['error']}")
+        else:
+            for res in report.get("results", []):
+                header = res.get("header", "N/A")
+                status = res.get("status", "N/A")
+                actual = res.get("actual") or "없음"
+                line = f"• {header} : 상태 = {status} / 실제 값 = {actual}"
+                safe_multiline(pdf, line)
+        pdf.ln(3)
+
+    report_dir = os.path.join(base_dir, "static", "reports")
+    os.makedirs(report_dir, exist_ok=True)
+    filename = f"full_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
+    filepath = os.path.join(report_dir, filename)
+
+    try:
+        pdf.output(filepath)
+        print(f"[📄 PDF 저장 성공] {filepath}")
+    except Exception as e:
+        print(f"[❌ PDF 저장 실패] {e}")
+        filepath = None
+
+    return filepath
+
+def run_full_scan(base_url):
+    pages = smart_crawl_site(base_url)
+    all_results = []
+    header_reports = []
+    print(f"\n[🔍 총 {len(pages)}개 하위 URL 탐지됨]")
+    for i, page in enumerate(pages, 1):
+        print(f"\n[{i}/{len(pages)}] 대상: {page}")
+        header_reports.append(run_scan(page))
+        all_results.extend(detect_form_xss(page))
+        if '?' in page:
+            all_results.extend(detect_get_param_xss(page))
+            all_results.extend(detect_sqli(page))
+        all_results.extend(detect_csrf(page))
+    all_results.extend(detect_dom_xss_selenium(pages))
+    print("\n[✅ 전체 점검 완료]")
+    if all_results:
+        df = pd.DataFrame(all_results, columns=["원본", "탐지 URL", "기법", "페이로드"])
+        print(df)
+    else:
+        print("탐지된 취약점이 없습니다.")
+    pdf_path = generate_korean_pdf_report(all_results, header_reports, base_url)
+    print(f"[📄 PDF 보고서 저장 위치] {pdf_path}")
+
+if __name__ == "__main__":
+    url = input("분석할 URL 입력: ")
+    run_full_scan(url)

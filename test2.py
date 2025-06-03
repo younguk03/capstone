@@ -1,21 +1,47 @@
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse, parse_qs, urlencode
-from datetime import datetime
-
-import dbsetting
+from sklearn.feature_extraction.text import TfidfVectorizer  # 머신러닝을 위해 sklearn을 불러옴
 from flask_app import app, List, db
+import joblib
+import pandas as pd
+import pickle
+import random
+# 전처리 및 벡터화
+df = pd.read_csv('XSS_dataset.csv')
+payloads = df['Sentence'].dropna().unique().tolist()
 
-xss_payloads = [
-    "<script>alert(1)</script>",
-    "<svg><script>confirm(1)</script>",
-    "'\"><img src=x onerror=alert(1)",
-    "\"><svg/onload=confirm(1)>",
-    "<body onload=prompt(1)>"
-]
+
+# 열의 이름이 sentence
+X = df['Sentence']
+y = df['Label'] # 1: 악성, 0: 정상
+vectorizer = TfidfVectorizer()
+X_vec = vectorizer.fit_transform(X)
 
 
-def smart_crawl_site(base_url, max_links=50):
+# 모델 학습
+model = joblib.load('xss_model.pkl')
+vectorizer = joblib.load('vectorizer.pkl')
+malicious_payloads = df[df['Label'] == 1]['Sentence'].dropna().unique().tolist()
+
+with open('filtered_payloads.pkl', 'wb') as f:
+    pickle.dump(malicious_payloads, f)
+with open('filtered_payloads.pkl', 'rb') as f:
+    xss_payloads = pickle.load(f)
+# xss_payloads = random.sample(xss_payloads, 20)
+# maxlink=1로 맞추기
+def is_malicious(text):
+    vec = vectorizer.transform([text])
+    return model.predict(vec)[0] == 1
+
+# # 악성 페이로드 필터링
+# filtered_payloads = [p for p in payloads if is_malicious(p)]
+#
+# # 파일로 저장
+# with open('filtered_payloads.pkl', 'wb') as f:
+#     pickle.dump(filtered_payloads, f)
+
+def smart_crawl_site(base_url, max_links=10):
     visited, to_visit, collected = set(), [base_url], []
     get_candidates, form_candidates = [], []
 
@@ -24,7 +50,7 @@ def smart_crawl_site(base_url, max_links=50):
         if url in visited:
             continue
         try:
-            res = requests.get(url, timeout=2)
+            res = requests.get(url, timeout=1)
             soup = BeautifulSoup(res.text, 'html.parser')
             visited.add(url)
             collected.append(url)
@@ -58,7 +84,7 @@ def test_get_xss(url, payloads):
                 test_query = urlencode(test_params, doseq=True)
                 test_url = f"{parsed.scheme}://{parsed.netloc}{parsed.path}?{test_query}"
                 try:
-                    resp = requests.get(test_url, timeout=2)
+                    resp = requests.get(test_url, timeout=1)
                     if payload in resp.text:
                         results.append({
                             "원본 페이지": url,
@@ -74,7 +100,7 @@ def test_get_xss(url, payloads):
                 except Exception as e:
                     continue
                 try:
-                    resp = requests.post(test_url, timeout=2)
+                    resp = requests.post(test_url, timeout=1)
                     if payload in resp.text:
                         results.append({
                             "원본 페이지": url,
@@ -97,7 +123,7 @@ def test_post_xss(url, payloads):
     with app.app_context():
         results = []
         try:
-            res = requests.get(url, timeout=5)
+            res = requests.get(url, timeout=2)
             soup = BeautifulSoup(res.text, 'html.parser')
             forms = soup.find_all('form')
             for form in forms:
@@ -109,7 +135,7 @@ def test_post_xss(url, payloads):
                     name = inp.get('name')
                     if not name:
                         continue
-                    data[name] = xss_payloads[0]  # 대표 페이로드
+                    data[name] = payload
                 action_url = urljoin(url, action) if action else url
                 for payload in payloads:
                     for k in data:
@@ -151,7 +177,7 @@ def test_post_xss(url, payloads):
 def main(url):
     with app.app_context():
         db.create_all()
-    get_candidates, form_candidates = smart_crawl_site(url, max_links=50)
+    get_candidates, form_candidates = smart_crawl_site(url, max_links=40)
     report = []
     for url_text in get_candidates:
         report.extend(test_get_xss(url_text, xss_payloads))
@@ -159,7 +185,7 @@ def main(url):
         report.extend(test_post_xss(url_text, xss_payloads))
 
     a = len(report)
-    
+
 
     # 보고서 출력
     print("XSS / DOM XSS 취약점 탐지 보고서\n")
@@ -175,7 +201,7 @@ def main(url):
         print(f"{idx:<4} {item['원본 페이지'][:38]:<40} {'발견됨':<6} 해커가 이 주소에 악성 코드를 넣을 수 있습니다.")
         print("\n※ 발견된 주소는 웹 개발자 또는 보안 담당자에게 전달해 주세요.")
 
-# if __name__ == "__main__":
-#     url = 'http://testphp.vulnweb.com'
-#     main(url=url)
+if __name__ == "__main__":
+    url = 'http://testphp.vulnweb.com'
+    main(url=url)
 

@@ -1,321 +1,318 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>result</title>
+    <title>VulnTotal</title>
     <link
-      href="{{url_for('static', filename='./css/styles2.css')}}"
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-  </head>
-  <body style="min-width: 900px; max-width: 1200px;">
-    <div>
-      <p style="text-align: center; padding: 15px; font-size: 30px">
-        취약점 분석 결과
-      </p>
-      <form action="" style="width: 90%; margin: auto;">
-        <div
-          style="font-weight: 400; font-size: 18px; width: 90%"
-        >
-          검사 url:
-          <b class="url_name" id="input-url"><a href="{{url}}">{{url}}</a></b>
-          <button class="button">PDF 다운로드</button>
-        </div>
-      </form>
-      <br />
-    </div>
-    <table style="border-collapse: collapse; margin: auto; width: 900px; max-width: 1300px;">
-      <tr style="border: solid 1px black; height: 15px">
-        <th style="border: 1px solid black; padding: 2px">번호</th>
-        <th style="border: 1px solid black; padding: 2px">내용</th>
-      </tr>
-      {%for list in lists%}
-      <tr>
-        <td style="border: 1px solid black; padding: 4px; text-align: center">
-          {{list.id}}
-        </td>
-        <td style="border: 1px solid black; padding: 2px">
-          요청 방식: {{list.type}} <br />
-          인터넷 주소: {{list.originalPage}}<br />
-          테스트된 URL: {{list.testURL}} <br />
-          위험 코드(페이로드): {{list.payload}} 해커가 이 주소에 악성 코드를
-          넣을 수 있습니다.
-        </td>
-      </tr>
-      {%endfor%}
-    </table>
-  </body>
-</html> -->
+    <style>
+      :root {
+        --primary-color: #4a6cf7;
+        --secondary-color: #212b36;
+        --accent-color: #f94f4f;
+        --accent-color1: #4384fc;
+        --light-bg: #f4f8fc;
+        --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        --table-header-bg: #4a6cf7;
+        --table-odd-row: #f8f9fa;
+        --table-border: #e9ecef;
+      }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>취약점 분석 결과</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    :root {
-      --primary-color: #4a6cf7;
-      --secondary-color: #212b36;
-      --accent-color: #f94f4f;
-      --light-bg: #f4f8fc;
-      --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-      --table-header-bg: #4a6cf7;
-      --table-odd-row: #f8f9fa;
-      --table-border: #e9ecef;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    body {
-      background-color: var(--light-bg);
-      color: #333;
-      min-height: 100vh;
-      padding: 30px 0;
-      margin: 0 auto;
-      min-width: 900px;
-      max-width: 1200px;
-    }
-    
-    .container {
-      width: 90%;
-      margin: 0 auto;
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: var(--card-shadow);
-      padding: 30px;
-      overflow: hidden;
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #eaeaea;
-    }
-    
-    .header h1 {
-      color: var(--secondary-color);
-      font-size: 32px;
-      margin-bottom: 15px;
-      position: relative;
-      display: inline-block;
-    }
-    
-    .header h1:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background-color: var(--primary-color);
-      border-radius: 2px;
-    }
-    
-    .url-section {
-      background-color: var(--light-bg);
-      padding: 20px;
-      border-radius: 8px;
-      margin-bottom: 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    .url-container {
-      display: flex;
-      align-items: center;
-      flex: 1;
-    }
-    
-    .url-label {
-      font-weight: 500;
-      font-size: 18px;
-      color: var(--secondary-color);
-      margin-right: 10px;
-    }
-    
-    .url-value {
-      font-weight: 600;
-      color: var(--primary-color);
-      word-break: break-all;
-      max-width: 70%;
-    }
-    
-    .url-value a {
-      color: var(--primary-color);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    
-    .url-value a:hover {
-      color: #3657d4;
-      text-decoration: underline;
-    }
-    
-    .btn-download {
-      background-color: var(--primary-color);
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: background-color 0.3s;
-    }
-    
-    .btn-download:hover {
-      background-color: #3657d4;
-    }
-    
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-    }
-    
-    thead {
-      background-color: var(--table-header-bg);
-      color: white;
-    }
-    
-    th {
-      text-align: left;
-      padding: 16px;
-      font-weight: 600;
-    }
-    
-    th:first-child {
-      width: 80px;
-      text-align: center;
-    }
-    
-    td {
-      padding: 16px;
-      border-bottom: 1px solid var(--table-border);
-      vertical-align: top;
-    }
-    
-    tr:last-child td {
-      border-bottom: none;
-    }
-    
-    td:first-child {
-      text-align: center;
-      font-weight: 600;
-      color: var(--secondary-color);
-    }
-    
-    tr:nth-child(even) {
-      background-color: var(--table-odd-row);
-    }
-    
-    .vulnerability-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      row-gap: 12px;
-      column-gap: 10px;
-    }
-    
-    .item-label {
-      font-weight: 500;
-      color: var(--secondary-color);
-    }
-    
-    .item-value {
-      color: #444;
-    }
-    
-    .payload {
-      background-color: #ffebeb;
-      border-radius: 4px;
-      padding: 8px 12px;
-      position: relative;
-      border-left: 3px solid var(--accent-color);
-      margin-top: 5px;
-      font-family: monospace;
-      word-break: break-all;
-    }
-    
-    .warning-text {
-      margin-top: 8px;
-      color: var(--accent-color);
-      font-style: italic;
-      font-size: 14px;
-      display: flex;
-      align-items: center;
-    }
-    
-    .warning-text i {
-      margin-right: 6px;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>취약점 분석 결과</h1>
-    </div>
-    
-    <div class="url-section">
-      <div class="url-container">
-        <span class="url-label">검사 URL:</span>
-        <span class="url-value" id="input-url"><a href="{{url}}">{{url}}</a></span>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--light-bg);
+        color: #333;
+        min-height: 100vh;
+        padding: 30px 0;
+        margin: 0 auto;
+        min-width: 900px;
+        max-width: 1200px;
+      }
+
+      .container {
+        width: 90%;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: var(--card-shadow);
+        padding: 30px;
+        overflow: hidden;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .header h1 {
+        color: var(--secondary-color);
+        font-size: 32px;
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .header h1:after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background-color: var(--primary-color);
+        border-radius: 2px;
+      }
+
+      .url-section {
+        background-color: var(--light-bg);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .url-container {
+        display: flex;
+        align-items: center;
+        flex: 1;
+      }
+
+      .url-label {
+        font-weight: 500;
+        font-size: 18px;
+        color: var(--secondary-color);
+        margin-right: 10px;
+      }
+
+      .url-value {
+        font-weight: 600;
+        color: var(--primary-color);
+        word-break: break-all;
+        max-width: 70%;
+      }
+
+      .url-value a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .url-value a:hover {
+        color: #3657d4;
+        text-decoration: underline;
+      }
+
+      .btn-download {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background-color 0.3s;
+      }
+
+      .btn-download:hover {
+        background-color: #3657d4;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+      }
+
+      thead {
+        background-color: var(--table-header-bg);
+        color: white;
+      }
+
+      th {
+        text-align: left;
+        padding: 16px;
+        font-weight: 600;
+      }
+
+      th:first-child {
+        width: 80px;
+        text-align: center;
+      }
+
+      td {
+        padding: 16px;
+        border-bottom: 1px solid var(--table-border);
+        vertical-align: top;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      td:first-child {
+        text-align: center;
+        font-weight: 600;
+        color: var(--secondary-color);
+      }
+
+      tr:nth-child(even) {
+        background-color: var(--table-odd-row);
+      }
+
+      .vulnerability-item {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        row-gap: 12px;
+        column-gap: 10px;
+      }
+
+      .item-label {
+        font-weight: 500;
+        color: var(--secondary-color);
+      }
+
+      .item-value {
+        color: #444;
+      }
+
+      .payload1 {
+        background-color: #ffebeb;
+        border-radius: 4px;
+        padding: 8px 12px;
+        position: relative;
+        border-left: 3px solid var(--accent-color);
+        margin-top: 5px;
+        font-family: monospace;
+        word-break: break-all;
+      }
+      .payload2 {
+        background-color: #bedbff;
+        border-radius: 4px;
+        padding: 8px 12px;
+        position: relative;
+        border-left: 3px solid var(--accent-color1);
+        margin-top: 5px;
+        font-family: monospace;
+        word-break: break-all;
+      }
+
+      .warning-text {
+        margin-top: 8px;
+        color: var(--accent-color);
+        font-style: italic;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+      }
+
+      .warning-text i {
+        margin-right: 6px;
+      }
+      .safe-text {
+        margin-top: 8px;
+        color: var(--accent-color1);
+        font-style: italic;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+      }
+
+      .safe-text i {
+        margin-right: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>취약점 분석 결과</h1>
       </div>
-      <button class="btn-download">
-        <i class="fas fa-file-pdf"></i> PDF 다운로드
-      </button>
-    </div>
-    
-    <table>
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>취약점 상세 정보</th>
-        </tr>
-      </thead>
-      <tbody>
-        {%for list in lists%}
-        <tr>
-          <td>{{list.id}}</td>
-          <td>
-            <div class="vulnerability-item">
-              <span class="item-label">요청 방식:</span>
-              <span class="item-value">{{list.type}}</span>
-              
-              <span class="item-label">인터넷 주소:</span>
-              <span class="item-value">{{list.originalPage}}</span>
-              
-              <span class="item-label">테스트된 URL:</span>
-              <span class="item-value">{{list.testURL}}</span>
-              
-              <span class="item-label">위험 코드(페이로드):</span>
-              <div>
-                <div class="payload">{{list.payload}}</div>
-                <div class="warning-text">
-                  <i class="fas fa-exclamation-triangle"></i>
-                  해커가 이 주소에 악성 코드를 삽입할 위험이 있습니다.
+
+      <div class="url-section">
+        <div class="url-container">
+          <span class="url-label">검사 URL:</span>
+          <span class="url-value" id="input-url"
+            ><a href="{{url}}">{{url}}</a></span
+          >
+        </div>
+        <form action="/download_report" method="get">
+          <button class="btn-download" type="submit">
+            <i class="fas fa-file-pdf"></i> PDF 다운로드
+          </button>
+        </form>
+      </div>
+      <div>
+        {%for scan in scans[-1:]%}
+        <p style="padding: 30px; padding-top: 0; font-size: medium">
+          [<i class="fa-solid fa-magnifying-glass" style="padding-right: 3px;"></i>총 {{scan.scanId}}개 URL 탐지!]
+        </p>
+        {% endfor %}
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>취약점 상세 정보</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for list in lists%}
+          <tr>
+            <td>{{list.id}}</td>
+            <td>
+              <div class="vulnerability-item">
+                <span class="item-label">방식:</span>
+                <span class="item-value">{{list.method}}</span>
+
+                <span class="item-label">인터넷 주소:</span>
+                <span class="item-value">{{list.originalPage}}</span>
+
+                <span class="item-label">테스트된 URL:</span>
+                <span class="item-value">{{list.testURL}}</span>
+
+                <span class="item-label">위험 코드(페이로드):</span>
+                {%if '없음' in list.payload%}
+                <div>
+                  <div class="payload2">{{list.payload}}</div>
+                  <div class="safe-text">
+                    <i class="fa-solid fa-face-smile" style="margin-left:5px"></i>
+                    이 주소는 공격에 안전합니다.
+                  </div>
                 </div>
+                {%else%}
+                <div>
+                  <div class="payload1">{{list.payload}}</div>
+                  <div class="warning-text">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    해커가 이 주소에 악성 코드를 삽입할 위험이 있습니다.
+                  </div>
+                </div>
+                {%endif%}
               </div>
-            </div>
-          </td>
-        </tr>
-        {%endfor%}
-      </tbody>
-    </table>
-  </div>
-</body>
+            </td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>

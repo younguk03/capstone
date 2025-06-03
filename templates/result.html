@@ -1,0 +1,17 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>스캔 결과</title>
+  </head>
+  <body>
+    <h1>스캔 완료</h1>
+    <ul>
+      {% for rpt in reports %}
+      <li><a href="/reports/{{ rpt }}">{{ rpt }}</a></li>
+      {% endfor %}
+    </ul>
+    <a href="/">다시 스캔</a>
+  </body>
+</html>

@@ -2,34 +2,152 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Capstone</title>
-    <link
+    <title>VulnTotal</title>
+    <!-- <link
       rel="stylesheet"
       href="{{url_for('static', filename='./css/styles.css')}}"
+    /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+
+    <style>
+      body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        /* background: linear-gradient(135deg, rgb(15, 23, 42), rgb(30, 41, 59)); */
+        color: white;
+      }
+
+      /**/
+      .navbar {
+        padding: 20px;
+        margin-top: 10px;
+        border-bottom: 1px solid gray;
+      }
+
+      input {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        min-width: 400px;
+        max-width: 800px;
+        padding: 10px;
+        background: rgb(255, 255, 255);
+        border: 2px solid rgb(218, 218, 218);
+        border-radius: 10px;
+        color: rgb(138, 138, 138);
+        /* margin-bottom: 10px; */
+        height: 25px;
+        outline: none;
+        transition: 0.6s all;
+      }
+
+      input:focus {
+        border: 2px solid rgb(113, 149, 255);
+        box-shadow: rgb(113, 149, 255) 0 0 12px 2px;
+      }
+
+      .main {
+        border: 1px solid white;
+        margin: auto;
+        margin-top: 40px;
+        box-shadow: rgb(210, 210, 210) 0 0 12px 2px;
+        border-radius: 20px;
+        min-width: 350px;
+        max-width: 900px;
+      }
+
+      button {
+        height: 56px;
+        width: 180px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border-radius: 12px;
+        font-size: 16px;
+        transition: 0.6s all;
+        font-weight: 500;
+      }
+
+      .button1 {
+        /* background-color: rgb(0, 72, 255); */
+        background-color: rgb(0, 72, 255);
+        border: 1px rgb(0, 72, 255) solid;
+        color: white;
+        transition: 0.6s all;
+      }
+      .button1:hover {
+        background-color: rgb(1, 43, 149);
+      }
+      .button2 {
+        background-color: white;
+        color: rgb(0, 72, 255);
+        border: solid 2px rgb(0, 72, 255);
+      }
+      .button2:hover {
+        background-color: rgb(0, 72, 255);
+        color: white;
+      }
+
+      img {
+        -webkit-filter: opacity(0.5) drop-shadow(0 0 0 rgb(0, 84, 252));
+      }
+    </style>
   </head>
-  <body style="margin: 0; background-color: rgb(38, 49, 76)">
+  <body>
     <div>
-      <h1 class="header">URL 취약점 분석</h1>
-    </div>
-    <div style="text-align: center; margin-top: 40px;">
-      <img
-        src="static/internet.png"
-        style="width: 200px;"
-      />
-    </div>
-    <div class="form">
-      <form action="{{ url_for('result_page') }}" method="get">
-        <input
-          type="text"
-          class="search"
-          name="url"
-          placeholder="url입력하기"
-          required
-        />
-        <br>
-        <button type="submit" class="button" >search</button>
-      </form>
+      <div class="navbar">
+        <div style="font-size: xx-large; text-align: center; color: gray">
+          VulnTotal
+        </div>
+      </div>
+      <div class="main">
+        <div style="text-align: center; margin-top: 40px"></div>
+        <div class="form">
+          <div>
+            <div style="text-align: center">
+              <img src="/static/shield.png" alt="security" height="120px" />
+            </div>
+            <h2 style="color: rgb(83, 83, 255); text-align: center">
+              웹 보안 취약점 검사
+            </h2>
+            <p style="text-align: center; color: rgb(81, 81, 81)">
+              안전하고 신뢰할 수 있는 웹사이트를 위한 전문 보안 분석
+            </p>
+          </div>
+          <form id="scanForm" method="get">
+            <input
+              id="sqlQuery"
+              name="url"
+              placeholder="Enter your testURL here..."
+              required
+            />
+            <br />
+            <div style="display: flex; justify-content: center">
+              <button type="submit" class="button1" onclick="setAction('general_result_page')">
+                <i class="fa-solid fa-magnifying-glass fa-12x"></i>
+                일반 검사
+              </button>
+              <button type="submit" class="button2" onclick="setAction('deep_scan_result_page')">
+                <i class="fas fa-microscope" style="padding-right: 7px"></i>정밀
+                검사
+              </button>
+            </div>
+          </form>
+        
+        <p style="text-align: center; color: gray; font-size: medium; margin-bottom: 70px;">검사 결과가 나올 때 까지 약간의 시간이 듭니다.</p>
+          <script>
+            function setAction(routeName) {
+              const form = document.getElementById('scanForm');
+              form.action = `/${routeName}`; // Flask 라우트 이름에 따라 경로 지정
+            }
+          </script>
+          
+        </div>
+      </div>
     </div>
   </body>
 </html>

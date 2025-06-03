@@ -1,0 +1,4 @@
+cd C:\Users\chess\OneDrive\Desktop\SQL__injection
+venv\Scripts\activate
+venv\Scripts\activate
+http://127.0.0.1:5000

