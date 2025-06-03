@@ -265,7 +265,7 @@
       <div>
         {%for scan in scans[-1:]%}
         <p style="padding: 30px; padding-top: 0; font-size: medium">
-          [<i class="fa-solid fa-magnifying-glass" style="padding-right: 3px;"></i>총 {{scan.scanId}}개 URL 탐지!]
+          <i class="fa-solid fa-magnifying-glass" style="padding-right: 3px;"></i>총 {{scan.scanId}}개 URL 탐지!
         </p>
         {% endfor %}
       </div>
@@ -297,7 +297,7 @@
                   <div class="payload2">{{list.payload}}</div>
                   <div class="safe-text">
                     <i class="fa-solid fa-face-smile" style="margin-left:5px"></i>
-                    이 주소는 공격에 안전합니다.
+                    공격에 안전합니다.
                   </div>
                 </div>
                 {%else%}
