@@ -9,7 +9,7 @@ import subprocess
 # utils 폴더의 절대경로를 sys.path에 추가
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = ('sqlite:///form.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = ('sqlite:///form.db')
+# app.config['SQLALCHEMY_DATABASE_URI'] = ('sqlite:///form.db')
 db = SQLAlchemy(app)
 
 class Scan(db.Model):
