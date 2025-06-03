@@ -9,7 +9,6 @@ import subprocess
 # utils 폴더의 절대경로를 sys.path에 추가
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = ('sqlite:///form.db')
-# app.config['SQLALCHEMY_DATABASE_URI'] = ('sqlite:///form.db')
 db = SQLAlchemy(app)
 
 class Scan(db.Model):
@@ -74,5 +73,5 @@ def download_report():
     return send_file(pdf_path, as_attachment=True)
 
 
-if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=int(os.environ.get("PORT",5000)))
+# if __name__ == '__main__':
+#     app.run(host="0.0.0.0", port=int(os.environ.get("PORT",5000)))
