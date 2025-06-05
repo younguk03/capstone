@@ -3,14 +3,16 @@
 import os
 from urllib.parse import urlparse, parse_qs
 import joblib
+import pickle
 
 # 모델 파일 경로 (models 디렉터리에 저장)
 SQLI_MODEL_PATH = os.path.join(os.path.dirname(__file__), 'models', 'sqli_detector.pkl')
-XSS_MODEL_PATH  = os.path.join(os.path.dirname(__file__), 'models', 'xss_detector.pkl')
+XSS_MODEL_PATH = os.path.join(os.path.dirname(__file__), 'models', 'xss_detector.pkl')
+
 
 # AI 모델 로드
 sqli_model = joblib.load(SQLI_MODEL_PATH)
-xss_model  = joblib.load(XSS_MODEL_PATH)
+xss_model = joblib.load(XSS_MODEL_PATH)
 
 
 def vectorize_input(url: str, param: str, value: str) -> list:

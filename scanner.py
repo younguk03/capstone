@@ -175,7 +175,10 @@ def detect_dom_xss_selenium(urls: list) -> list:
     options = Options(); options.add_argument('--headless=new'); options.add_argument('--window-size=1280,800')
     results = []
     try:
-        driver = webdriver.Chrome(service=Service('chromedriver.exe'), options=options)
+        # selenium에러 때문에 코드를 수정함
+        # driver = webdriver.Chrome(service=Service('chromedriver.exe'), options=options, executable_path='C:/Program Files/Google/Chrome/Application/chromedriver-win64/chromedriver.exe')
+        service = Service('C:/Program Files/Google/Chrome/Application/chromedriver-win64/chromedriver.exe')
+        driver = webdriver.Chrome(service=service, options=options)
         for u in urls:
             try:
                 driver.get(u); time.sleep(1)
@@ -338,4 +341,3 @@ def main(url,num):
         db.create_all()
     run_full_scan(url, num)
 
-main('http://testphp.vulnweb.com', 4)
