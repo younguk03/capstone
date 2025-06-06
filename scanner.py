@@ -341,3 +341,5 @@ def main(url,num):
         db.create_all()
     run_full_scan(url, num)
 
+main('http://testphp.vulnweb.com',10)
+
