@@ -172,7 +172,8 @@ def detect_csrf(url: str) -> list:
 
 # DOM 기반 XSS (Selenium)
 def detect_dom_xss_selenium(urls: list) -> list:
-    options = Options(); options.add_argument('--headless=new'); options.add_argument('--window-size=1280,800')
+    options = Options(); options.add_argumen
+    t('--headless=new'); options.add_argument('--window-size=1280,800')
     results = []
     try:
         # selenium에러 때문에 코드를 수정함
