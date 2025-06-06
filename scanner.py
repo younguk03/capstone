@@ -14,7 +14,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.common.exceptions import NoAlertPresentException
 from concurrent.futures import ThreadPoolExecutor
-
+from webdriver_manager.chrome import ChromeDriverManager
 import ai_detector
 
 # XSS 페이로드 리스트
@@ -172,13 +172,18 @@ def detect_csrf(url: str) -> list:
 
 # DOM 기반 XSS (Selenium)
 def detect_dom_xss_selenium(urls: list) -> list:
-    options = Options(); options.add_argumen
-    t('--headless=new'); options.add_argument('--window-size=1280,800')
+    # options = Options(); options.add_argumen
+    # t('--headless=new'); options.add_argument('--window-size=1280,800')
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless=new')
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
     results = []
     try:
         # selenium에러 때문에 코드를 수정함
         # driver = webdriver.Chrome(service=Service('chromedriver.exe'), options=options, executable_path='C:/Program Files/Google/Chrome/Application/chromedriver-win64/chromedriver.exe')
-        service = Service('C:/Program Files/Google/Chrome/Application/chromedriver-win64/chromedriver.exe')
+        # service = Service('C:/Program Files/Google/Chrome/Application/chromedriver-win64/chromedriver.exe')
+        service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
         for u in urls:
             try:
